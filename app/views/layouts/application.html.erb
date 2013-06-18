@@ -20,7 +20,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-        <a class="brand" href="#">Move It Level Editor</a>
+        <a class="brand" href="<% link_to :root %>">Move It Level Editor</a>
         <div class="nav-collapse">
           <ul class="nav">
             <li><%= link_to "Edit Levels", levels_path %></li>
@@ -39,10 +39,10 @@
 </div>
 <div class="container">
 <% if notice %>
-  <div class="row"><p class="notice"><%= notice %></p></div>
+  <div class="row"><p class="notice alert-success"><%= notice %></p></div>
 <% end %>
 <% if alert %>
-  <div class="row"><p class="alert"><%= alert %></p></div>
+  <div class="row"><p class="alert alert-error"><%= alert %></p></div>
 <% end %>
 </div>
 <div class="container">

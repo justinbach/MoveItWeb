@@ -4,6 +4,14 @@
     <div class="controls">
       <%= f.text_field :name, :class => 'text_field' %>
     </div>
+    <%= f.label :hero_x, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :hero_x, options_for_select((0..9).to_a, @level.hero_x) %>
+    </div>
+    <%= f.label :hero_y, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :hero_y, options_for_select((0..9).to_a, @level.hero_y) %>
+    </div>
   </div>
 
   <div class="form-actions">

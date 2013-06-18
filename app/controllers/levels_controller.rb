@@ -1,4 +1,9 @@
 class LevelsController < ApplicationController
+
+
+  before_filter :authenticate_user!, :except => [:index, :show]
+  before_filter :check_level, :only => [:show, :edit]
+
   # GET /levels
   # GET /levels.json
   def index
@@ -14,7 +19,6 @@ class LevelsController < ApplicationController
   # GET /levels/1.json
   def show
     @level = Level.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @level }
@@ -25,7 +29,6 @@ class LevelsController < ApplicationController
   # GET /levels/new.json
   def new
     @level = Level.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @level }
@@ -41,7 +44,7 @@ class LevelsController < ApplicationController
   # POST /levels.json
   def create
     @level = Level.new(params[:level])
-
+    @level.user = current_user
     respond_to do |format|
       if @level.save
         format.html { redirect_to @level, notice: 'Level was successfully created.' }
@@ -80,4 +83,11 @@ class LevelsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def check_level
+    @level = Level.find(params[:id]) rescue nil
+    redirect_to :root if @level.nil?
+  end
+
+
 end
